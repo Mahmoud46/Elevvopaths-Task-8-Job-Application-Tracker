@@ -16,11 +16,11 @@ export default function Dashboard(): ReactNode {
 	const [jobApplications, setJobApplications] = useState<IJob[]>([]);
 
 	useEffect(() => {
-		const tempApplications: IJob[] = jobsData.filter((job) =>
-			searchTitle.trim() == "" && filterKey == "All"
-				? job.job_title
-				: job.job_title.toLowerCase().includes(searchTitle.toLowerCase()) &&
-				  job.status.includes(filterKey)
+		const tempApplications: IJob[] = jobsData.filter(
+			(job) =>
+				(searchTitle.trim() === "" ||
+					job.job_title.toLowerCase().includes(searchTitle.toLowerCase())) &&
+				(filterKey === "All" || job.status.includes(filterKey))
 		);
 		setJobApplications(tempApplications);
 	}, [filterKey, searchTitle, jobsData]);
