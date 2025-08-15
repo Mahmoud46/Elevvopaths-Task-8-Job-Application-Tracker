@@ -1,0 +1,44 @@
+{
+	"jobs": [
+		{
+			"id": "1",
+			"company_name": "TechNova Solutions",
+			"job_title": "Frontend Developer",
+			"status": "Applied",
+			"application_date": "2025-07-28",
+			"notes": "Submitted via company career portal. Awaiting response."
+		},
+		{
+			"id": "2",
+			"company_name": "HealthAI Innovations",
+			"job_title": "Machine Learning Engineer",
+			"status": "Interviewing",
+			"application_date": "2025-07-20",
+			"notes": "Completed first-round technical interview. Second round scheduled for Aug. 15."
+		},
+		{
+			"id": "3",
+			"company_name": "GreenPath Energy",
+			"job_title": "Data Analyst",
+			"status": "Rejected",
+			"application_date": "2025-06-30",
+			"notes": "Received rejection email after initial screening."
+		},
+		{
+			"id": "4",
+			"company_name": "UrbanSoft Technologies",
+			"job_title": "Full Stack Engineer",
+			"status": "Offer",
+			"application_date": "2025-07-10",
+			"notes": "Offer received on Aug. 5. Negotiating salary."
+		},
+		{
+			"id": "5",
+			"company_name": "SkyLink Aerospace",
+			"job_title": "Software Engineer - Embedded Systems",
+			"status": "Applied",
+			"application_date": "2025-08-09",
+			"notes": "Referred by a former colleague."
+		}
+	]
+}
