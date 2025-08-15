@@ -33,6 +33,11 @@ export default function AppContextProvider({
 		);
 	};
 
+	const updateJobs = (jobApplications: IJob[]): void => {
+		setJobsData([...jobApplications]);
+		localStorage.setItem("jobs", JSON.stringify([...jobApplications]));
+	};
+
 	const updateJobStatus = (id: string, status: IStatus) => {
 		const jobsTemp: IJob[] = jobsData;
 		const jobIndex = jobsTemp.findIndex((job) => job.id === id);
@@ -43,8 +48,7 @@ export default function AppContextProvider({
 		}
 
 		jobsTemp[jobIndex].status = status;
-		setJobsData([...jobsTemp]);
-		localStorage.setItem("jobs", JSON.stringify([...jobsTemp]));
+		updateJobs(jobsTemp);
 		toast.success("Job status updated successfully");
 	};
 
@@ -57,8 +61,7 @@ export default function AppContextProvider({
 		}
 
 		jobsTemp[jobIndex] = { ...jobsTemp[jobIndex], ...updatedJob };
-		setJobsData([...jobsTemp]);
-		localStorage.setItem("jobs", JSON.stringify([...jobsTemp]));
+		updateJobs(jobsTemp);
 		toast.success("Job updated successfully");
 	};
 
@@ -66,15 +69,13 @@ export default function AppContextProvider({
 		let jobsTemp: IJob[] = jobsData;
 		jobsTemp = jobsTemp.filter((job) => job.id !== id);
 
-		setJobsData([...jobsTemp]);
-		localStorage.setItem("jobs", JSON.stringify([...jobsTemp]));
+		updateJobs(jobsTemp);
 		toast.success("Job deleted successfully");
 	};
 
 	const addJob = (newJob: IJob): void => {
 		const jobsTemp: IJob[] = [newJob, ...jobsData];
-		setJobsData([...jobsTemp]);
-		localStorage.setItem("jobs", JSON.stringify([...jobsTemp]));
+		updateJobs(jobsTemp);
 		toast.success("Job added successfully");
 	};
 
@@ -105,7 +106,7 @@ export default function AppContextProvider({
 			try {
 				const content = e.target?.result as string;
 				const parsed = JSON.parse(content) as { jobs: IJob[] };
-				setJobsData(parsed.jobs);
+				updateJobs(parsed.jobs);
 				toast.success("File uploaded successfully!");
 			} catch (error) {
 				if (error instanceof Error) {
